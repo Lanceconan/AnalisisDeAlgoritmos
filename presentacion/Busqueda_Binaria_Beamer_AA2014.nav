@@ -20,33 +20,47 @@
 \headcommand {\beamer@subsectionentry {0}{2}{1}{6}{Calculo de Complejidad}}\headcommand {\beamer@subsectionpages {6}{5}}
 \headcommand {\slideentry {2}{1}{1}{6/6}{Calculo de Complejidad}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{7}{Mejor Caso}}\headcommand {\beamer@subsectionpages {6}{6}}
-\headcommand {\slideentry {2}{2}{1}{7/7}{Mejor Caso}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{7}{Calculo de Complejidad}}\headcommand {\beamer@subsectionpages {6}{6}}
+\headcommand {\slideentry {2}{2}{1}{7/7}{Calculo de Complejidad}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\beamer@subsectionentry {0}{2}{3}{8}{Peor Caso}}\headcommand {\beamer@subsectionpages {7}{7}}
-\headcommand {\slideentry {2}{3}{1}{8/8}{Peor Caso}{0}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{8}{Calculo de Complejidad}}\headcommand {\beamer@subsectionpages {7}{7}}
+\headcommand {\slideentry {2}{3}{1}{8/8}{Calculo de Complejidad}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\sectionentry {3}{Sobre el programa}{9}{Sobre el programa}{0}}
-\headcommand {\beamer@sectionpages {6}{8}}
-\headcommand {\beamer@subsectionpages {8}{8}}
-\headcommand {\beamer@subsectionentry {0}{3}{1}{9}{Sobre el C\IeC {\'o}digo}}\headcommand {\beamer@subsectionpages {9}{8}}
-\headcommand {\slideentry {3}{1}{1}{9/16}{Sobre el C\IeC {\'o}digo}{0}}
-\headcommand {\beamer@framepages {9}{16}}
-\headcommand {\beamer@subsectionentry {0}{3}{2}{17}{Caracteristicas}}\headcommand {\beamer@subsectionpages {9}{16}}
-\headcommand {\slideentry {3}{2}{1}{17/22}{Caracteristicas}{0}}
-\headcommand {\beamer@framepages {17}{22}}
-\headcommand {\beamer@subsectionentry {0}{3}{3}{23}{Pruebas}}\headcommand {\beamer@subsectionpages {17}{22}}
-\headcommand {\slideentry {3}{3}{1}{23/23}{Pruebas}{0}}
-\headcommand {\beamer@framepages {23}{23}}
-\headcommand {\slideentry {3}{3}{2}{24/37}{Pruebas}{0}}
-\headcommand {\beamer@framepages {24}{37}}
-\headcommand {\sectionentry {4}{Conclusiones}{38}{Conclusiones}{0}}
-\headcommand {\beamer@sectionpages {9}{37}}
-\headcommand {\beamer@subsectionpages {23}{37}}
-\headcommand {\slideentry {4}{0}{3}{38/39}{}{0}}
-\headcommand {\beamer@framepages {38}{39}}
-\headcommand {\beamer@partpages {1}{39}}
-\headcommand {\beamer@subsectionpages {38}{39}}
-\headcommand {\beamer@sectionpages {38}{39}}
-\headcommand {\beamer@documentpages {39}}
-\headcommand {\def \inserttotalframenumber {13}}
+\headcommand {\slideentry {2}{3}{2}{9/9}{Calculo de Complejidad}{0}}
+\headcommand {\beamer@framepages {9}{9}}
+\headcommand {\beamer@subsectionentry {0}{2}{4}{10}{Mejor y Peor Caso}}\headcommand {\beamer@subsectionpages {8}{9}}
+\headcommand {\slideentry {2}{4}{1}{10/11}{Mejor y Peor Caso}{0}}
+\headcommand {\beamer@framepages {10}{11}}
+\headcommand {\sectionentry {3}{Sobre el programa}{12}{Sobre el programa}{0}}
+\headcommand {\beamer@sectionpages {6}{11}}
+\headcommand {\beamer@subsectionpages {10}{11}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{12}{Sobre el C\IeC {\'o}digo}}\headcommand {\beamer@subsectionpages {12}{11}}
+\headcommand {\slideentry {3}{1}{1}{12/19}{Sobre el C\IeC {\'o}digo}{0}}
+\headcommand {\beamer@framepages {12}{19}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{20}{Caracteristicas}}\headcommand {\beamer@subsectionpages {12}{19}}
+\headcommand {\slideentry {3}{2}{1}{20/25}{Caracteristicas}{0}}
+\headcommand {\beamer@framepages {20}{25}}
+\headcommand {\beamer@subsectionentry {0}{3}{3}{26}{Pruebas}}\headcommand {\beamer@subsectionpages {20}{25}}
+\headcommand {\slideentry {3}{3}{1}{26/39}{Pruebas}{0}}
+\headcommand {\beamer@framepages {26}{39}}
+\headcommand {\slideentry {3}{3}{2}{40/40}{Pruebas}{0}}
+\headcommand {\beamer@framepages {40}{40}}
+\headcommand {\beamer@subsectionentry {0}{3}{4}{41}{Ventajas}}\headcommand {\beamer@subsectionpages {26}{40}}
+\headcommand {\slideentry {3}{4}{1}{41/41}{Ventajas}{0}}
+\headcommand {\beamer@framepages {41}{41}}
+\headcommand {\slideentry {3}{4}{2}{42/42}{Ventajas}{0}}
+\headcommand {\beamer@framepages {42}{42}}
+\headcommand {\slideentry {3}{4}{3}{43/43}{Ventajas}{0}}
+\headcommand {\beamer@framepages {43}{43}}
+\headcommand {\sectionentry {4}{Conclusiones}{44}{Conclusiones}{0}}
+\headcommand {\beamer@sectionpages {12}{43}}
+\headcommand {\beamer@subsectionpages {41}{43}}
+\headcommand {\slideentry {4}{0}{4}{44/46}{}{0}}
+\headcommand {\beamer@framepages {44}{46}}
+\headcommand {\slideentry {4}{0}{5}{47/47}{}{0}}
+\headcommand {\beamer@framepages {47}{47}}
+\headcommand {\beamer@partpages {1}{47}}
+\headcommand {\beamer@subsectionpages {44}{47}}
+\headcommand {\beamer@sectionpages {44}{47}}
+\headcommand {\beamer@documentpages {47}}
+\headcommand {\def \inserttotalframenumber {19}}

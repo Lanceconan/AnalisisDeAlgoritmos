@@ -131,17 +131,22 @@ Manuel Irarrázabal \\  Rafael Vivar \\ Daniel Gutiérrez \\ Juan Cid
 			\frametitle{Definicion}
 				\begin{center}
 				La búsqueda binaria en un vector ordenado de datos se realiza comprobando el elemento que está en el centro del vector y mirando si el elemento buscado es mayor o menor. 
+				
+				Consiste en buscar el elemento del medio (por ejemplo, si hubiera 13 elementos en la colección se comenzaría por el elemento en la 7ma posición; si hubiera 10 elementos se comienza por el que está en la 5ta posición) y comparar ese elemento por mayor o menor con respecto al elemento buscado. Si el buscado es mayor que el del medio, se descarta la mitad menor y se continúa buscando en la mitad mayor. Si es menor, se hace a la inversa. Si es igual, se ha encontrado el elemento buscado. 
 				\end{center}
 		
 		\end{frame}
 
 		\begin{frame}
-			\frametitle{Proposito búsqueda binaria}
+			\frametitle{Propósito búsqueda binaria}
 				
 			\begin{center}
 			Se utiliza cuando el vector en el que queremos determinar la existencia de un elemento está previamente ordenado.
 
 			Este algoritmo reduce el tiempo de búsqueda considerablemente, ya que disminuye exponencialmente el número de iteraciones necesarias.
+			
+			Está altamente recomendado para buscar en arrays de gran tamaño. Por ejemplo, en uno conteniendo 50.000.000 elementos, realiza como máximo 26 comparaciones (en el peor de los casos).
+
 			\end{center}
 		\end{frame}
 
@@ -170,38 +175,123 @@ Manuel Irarrázabal \\  Rafael Vivar \\ Daniel Gutiérrez \\ Juan Cid
 
 		\begin{frame}
 			\frametitle{Calculo de complejidad}
-			
+			Dado que este algoritmo compara el valor a buscar con el elemento central del vector presenta la siguiente ecuación de recurrencia:
+			\begin{equation}
+					T(n) = T(n/2) + C
+				\end{equation}
+			\begin{equation}
+					T(0) = 1
+				\end{equation}
+Reemplazando las n en la ecuación original con valores sucesivos queda así:
+             \begin{equation}
+					T(n/2) = T(n/4) + C
+				\end{equation}
+				  \begin{equation}
+					T(n/2) = T(n/8) + C
+				\end{equation}
+				  \begin{equation}
+					T(n/2) = T(n/16) + C
+				\end{equation}
+				  \begin{equation}
+					T(n/2) = T(n/32) + C
+				\end{equation}
 		\end{frame}
 
-%------------------------------------------------
 
-	\subsection{Mejor Caso}
+
+	\subsection{Calculo de Complejidad}
+
+		\begin{frame}
+			\frametitle{Calculo de complejidad}
+		Luego, se generaliza en términos de n y k para eliminar la recurrencia
+			\begin{equation}
+					T(n) = T(n/2) + C
+				\end{equation}
+			\begin{equation}
+					T(n) = T(n/4) + C + C
+				\end{equation}
+             \begin{equation}
+					T(n) = T(n/8) + C + C + C
+				\end{equation}
+				  \begin{equation}
+					T(n) = T(n/16) + C + C + C + C
+				\end{equation}
+			  \begin{equation}
+					T(n) = T(n/32) + C + C + C + C + C
+				\end{equation}
+				Resultado:
+			  \begin{equation}
+					T(n) = T(n/2^k) + kC
+				\end{equation}
+				Lo siguente es igualar con la condición inicial los términos encerrados en T(n). Pero primero, se debe despejar la variable “k”
+              \begin{equation}
+					n/2^k = 1 ===> n = 2^k
+				\end{equation}
+				
+		\end{frame}
+		
+		
+		\subsection{Calculo de Complejidad}
+
+		\begin{frame}
+			\frametitle{Calculo de complejidad}
+		Aplicando propiedades de logaritmos para despejar la variable “k”
+			\begin{equation}
+					log_2 {(n)} = k
+				\end{equation}
+		Finalmente, se procede a reemplazar los términos k con la condición inicial:
+			\begin{equation}
+					T(n) = T(n/2^{log_2 {(n)}}) + log_2 {(n)} * C
+				\end{equation}
+		Como la componente 
+
+               \begin{equation}
+                    T(n/2^{log_2 {(n)}})
+                   \end{equation}
+
+
+		\end{frame}
+
+
+	\begin{frame}
+		\frametitle{Calculo de Complejidad}
+		
+		 quedó igualada con la condición 
+
+	\begin{equation}
+		T(0) = 1 
+	\end{equation}
+
+	se llega al siguiente resultado
+             \begin{equation}
+					T(n) = 1 + log_2 {(n)} * C ===> T(n) = log_2 {(n)}
+				\end{equation}
+		Finalmente, se concluye que la búsqueda binaria recursiva tiene complejidad de orden
+				  \begin{equation}
+					O(n) = log_2 {(n)}
+				\end{equation}		
+	\end{frame}
+
+
+
+%------------------------------------------------
+	\subsection{Mejor y Peor Caso}
 
 		\begin{frame}
 			\frametitle{Mejor Caso}
-			En base al árbol podemos postular que su altura esta expresada en la siguiente formula:
-				\begin{equation}
-					n < = 2^{(h + 1)} - 1
-				\end{equation}
-				Obteniendo que:
-				\begin{equation}
-					h >= \log_2{(n)}
-				\end{equation}
+			\begin{center}
+Como en todo algoritmo (dígase de búsqueda, ordenamiento, etc.) posee su nivel de complejidad y éste no es la excepción.\\
+A diferencia de la búsqueda binaria iterativa, su versión recursiva es más lenta con cada incremento de número de elementos, ya que existirán más llamadas a la función por resolver, con el consiguiente gasto de tiempo de guardar y restaurar parámetros.
+
+			\begin{itemize}[<+->]
+				\item Mejor caso: la búsqueda binaria coincide con el elemento buscado en el primer punto medio: sólo se necesitaría una comparación de elementos. Esto significa que sus tiempos de ejecución óptimos no dependen de la cantidad de datos: son constantes y por tanto proporcionales a 1, es decir, son de O(1).
 				
-			Esta es la característica principal de un árbol, la que permite que las operaciones sean tan rápidas, el único inconveniente es asegurar este mínimo valor para la altura ...
+				\item Peor caso: En el peor caso la búsqueda binaria recursiva divide el arreglo,requiriendo sólo un tiempo O(log n).
+			\end{itemize}			 
+			\end{center}
+
 		\end{frame}
-	\subsection{Peor Caso}
-		\begin{frame}
-			\frametitle{Peor Caso}
-			Si sumamos las operaciones de inserción y recorrido tendriamos lo siguiente para el mejor caso:
-			\begin{equation}
-				O(n) = n  \log_2{(n)} + n
-			\end{equation}
-			O esto para el peor caso:
-			\begin{equation}
-				O(n) = n^2 + n
-			\end{equation}
-		\end{frame}
+	
 
 % Programa
 \section{Sobre el programa}
@@ -243,19 +333,7 @@ Manuel Irarrázabal \\  Rafael Vivar \\ Daniel Gutiérrez \\ Juan Cid
 	
 
 	\subsection{Pruebas}
-	\begin{frame}
-		\frametitle{Pruebas}
-		\begin{figure}
-			\begin{center}
-				Probemos el programa 
-			\end{center}
-  				\centering
-    			           \includegraphics[scale=0.25]{Programa.png}
-  				\caption{Pantallazo Aptana}
-  				\label{fig:lls}
-			\end{figure}	
-	\end{frame}
-	
+		
 	\begin{frame}
 		\frametitle{Pruebas}
 			\begin{itemize}[<+->]		
@@ -286,6 +364,69 @@ Manuel Irarrázabal \\  Rafael Vivar \\ Daniel Gutiérrez \\ Juan Cid
   				
 	\end{frame}
 
+	\begin{frame}
+		\frametitle{Pruebas}
+		\begin{figure}
+			\begin{center}
+				Probemos el programa 
+			\end{center}
+  				\centering
+    			           \includegraphics[scale=0.25]{Programa.png}
+  				\caption{Pantallazo Aptana}
+  				\label{fig:lls}
+			\end{figure}	
+	\end{frame}
+
+
+
+
+
+
+
+\subsection{Ventajas} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+		\begin{frame}
+			\frametitle{Ventajas}
+				\begin{center}
+				Es un método eficiente siempre que el vector se encuentre ordenado.
+
+                Proporciona un medio para reducir el tiempo requerido para buscar en una lista.
+                Es más rápido debido a su recursividad, su mayor ventaja es con los archivos extensos.
+                El código del procedimiento de está búsqueda es corto en comparación con las demás técnicas de búsquedas.
+
+				\end{center}
+		
+		\end{frame}
+
+		\begin{frame}
+			\frametitle{Desventajas}
+				
+			\begin{center}
+			El archivo debe estar ordenado y el almacenamiento de un archivo suele plantear problemas en la inserción y eliminación de elementos.
+
+			No revisa todos los elementos del archivo.
+			
+			Debe conocerse el número de elementos. 
+
+			\end{center}
+		\end{frame}
+
+
+\begin{frame}
+			\frametitle{Aplicaciones}
+				
+			\begin{center}
+			Partición Binaria del Espacio, usada en muchos videojuegos 3D para determinar que objeto necesita ser renderizado.
+
+			Binary Tries, usada en casi todos los router de alta banda ancha para guardar las tablas de enrutamiento.
+
+			
+			Codificación Huffman, algoritmo usado para la compresión de datos, se utiliza en los formatos .jpeg y mp3. 
+
+			\end{center}
+		\end{frame}
+
+
 
 
 \section{Conclusiones}
@@ -294,9 +435,21 @@ Manuel Irarrázabal \\  Rafael Vivar \\ Daniel Gutiérrez \\ Juan Cid
 			\begin{itemize}[<+->]
 				\item Se puede mejorar usando arboles autobalanceables, aunque estar asegurando minuciosamente puede añadir un costo considerable.
 				\item No se nota la tendencia logaritmica de las inserciones debido a la complejidad lineal del recorrido.
+			\item Otras Conclusiones
 			\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Conclusiones}
+		\begin{center}
+\Huge
+Fin\\
+¿Alguna Pregunta?
+		\end{center}	
 	\end{frame}
 
 
 
 \end{document} 
+
+
