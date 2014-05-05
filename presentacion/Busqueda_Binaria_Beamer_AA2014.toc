@@ -5,9 +5,7 @@
 \beamer@subsectionintoc {1}{2}{Funcion Binaria Recursiva en C/C++}{5}{0}{1}
 \beamer@sectionintoc {2}{Complejidad}{6}{0}{2}
 \beamer@subsectionintoc {2}{1}{Calculo de Complejidad}{6}{0}{2}
-\beamer@subsectionintoc {2}{2}{Calculo de Complejidad}{7}{0}{2}
-\beamer@subsectionintoc {2}{3}{Calculo de Complejidad}{8}{0}{2}
-\beamer@subsectionintoc {2}{4}{Mejor y Peor Caso}{10}{0}{2}
+\beamer@subsectionintoc {2}{2}{Mejor y Peor Caso}{10}{0}{2}
 \beamer@sectionintoc {3}{Sobre el programa}{12}{0}{3}
 \beamer@subsectionintoc {3}{1}{Sobre el C\IeC {\'o}digo}{12}{0}{3}
 \beamer@subsectionintoc {3}{2}{Caracteristicas}{20}{0}{3}
