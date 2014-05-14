@@ -1,0 +1,8 @@
+
+\section{Conclusiones}
+
+La premisa que tenemos es que nosotros tenemos que buscar un elemento $x$ en un vector v de tamaño $N$ que está previamente ordenado. Teniendo eso en cuenta podemos afirmar que cualquier subvector $w$ de $v$ de tamaño $[0..N]$ también está ordenado.
+Teniendo eso en cuenta vamos reduciendo el tamaño del problema ($N$) a la mitad en cada llamada recursiva. ¿Por qué? Porque si $x$ no es el elemento medio del vector $v$ de tamaño $N$, entonces verificamos si es menor o mayor que él. Si es menor, buscamos en el subvector de tamaño $N/2$ izquierdo, sino en el derecho.
+Como se ve, en nuestro algoritmo se pasa de forma cíclica a forma recursiva casi sin pensar. ¿Por qué? Estamos ante una función recursiva y podemos pensar en definitiva que estamos ejecutando un ciclo simplemente. Decir simplemente que hay tener en cuenta que el vector en el que vayamos a buscar un elemento, debe estar previamente ordenado.
+Decir también que hay estructuras de datos eficientes para la búsqueda como lo son por ejemplo las Tablas Hash o los Árboles Binarios de Búsqueda, ABB (variante AVL), por ejemplo.
+

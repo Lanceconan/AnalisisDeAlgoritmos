@@ -1,0 +1,210 @@
+
+\section{Algoritmo de búsqueda binaria recursiva}
+
+\subsection{Repositorio GitHub}
+
+Se adjunta el siguiente repositorio de GitHub donde se puede encontrar en el directorio ‘presentación’ una PPT hecho en Latex con Beamer su respectivo Código en Latex editado en TexWorks. 
+
+En el directorio \texttt{Informe} se encontrará el código \LaTeX \ del informe y el mismo en su correspondiente formato PDF.
+
+También se puede encontrar en el directorio ‘BusquedaBinaria’ el código en Ruby de la búsqueda Binaria Recursiva:\\
+
+{\centerline{\url{https://github.com/Lanceconan/AnalisisDeAlgoritmos}}}
+
+\subsection{Definición y explicación del algoritmo}
+
+La búsqueda binaria recursiva en un vector ordenado de datos se realiza comprobando el elemento que está en el centro del vector y mirando si el elemento buscado es mayor o menor. 
+
+La primera iteración de este algoritmo evalúa el elemento medio del arreglo. Si éste coincide con la clave de búsqueda, el algoritmo termina. Suponiendo que el arreglo se ordene en forma ascendente, entonces si la clave de búsqueda es menor que el elemento de en medio, no puede coincidir con ningún elemento en la segunda mitad del arreglo, y el algoritmo continúa sólo con la primera mitad (es decir, el primer elemento hasta, pero sin incluir, el elemento de en medio). Si la clave de búsqueda es mayor que el elemento de en medio, no puede coincidir con ninguno de los elementos de la primera mitad del arreglo, y el algoritmo continúa sólo con la segunda mitad del arreglo (es decir, desde el elemento después del elemento de en medio, hasta el último elemento). Cada iteración evalúa el valor medio de la porción restante del arreglo. Si la clave de búsqueda no coincide con el elemento, el algoritmo elimina la mitad de los elementos restantes. Para terminar, el algoritmo encuentra un elemento que coincide con la clave de búsqueda o reduce el sub-arreglo hasta un tamaño de cero. Como ejemplo, se consideró el siguiente arreglo ordenado de 15 elementos:\\
+
+{\centerline{2 \  3 \  5  \ 10 \  27 \  30 \  34 \  51 \  65 \  77 \  81 \  82 \  93 \  99} }
+
+\bigskip
+\noindent y una clave de búsqueda de 65. Un programa que implemente el algoritmo de búsqueda binaria primero comprobaría si el 51 es la clave de búsqueda (ya que 51 es el elemento de en medio del arreglo). La clave de búsqueda (65) es mayor que 51, por lo que este número se descarta junto con la primera mitad del arreglo (todos los elementos menores que 51). A continuación, el algoritmo comprueba si 81 (el elemento de en medio del resto del arreglo) coincide con la clave de búsqueda. La clave de búsqueda (65) es menor que 81, por lo que se descarta este número junto con los elementos mayores de 81. Después de sólo dos pruebas, el algoritmo ha reducido el número de valores a comprobar a tres (56, 65 y 77). Después el algoritmo comprueba el 65 (que coincide indudablemente con la clave de búsqueda), y devuelve el índice del elemento del arreglo que contiene el 65. Este algoritmo sólo requirió tres comparaciones para determinar si la clave de búsqueda coincidió con un elemento del arreglo. Un algoritmo de búsqueda lineal hubiera requerido 10 comparaciones.
+
+Un buen ejemplo de búsqueda binaria sería el siguiente:\\
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+{
+\ttfamily \small
+
+\noindent
+// Fig. 16.4: ArregloBinario.java\\
+// Clase que contiene un arreglo de enteros aleatorios y un método \\
+// que utiliza la búsqueda binaria para encontrar un entero.\\
+import java.util.Random;\\
+import java.util.Arrays;\\
+\\
+public class ArregloBinario
+
+\noindent \{
+
+\noindent \ \ \ \ private int[] datos; // arreglo de valores
+
+\noindent \ \ \ \ private static Random generador = new Random();\\
+
+\noindent \ \ \ \ // crea un arreglo de un tamaño dado y lo llena con enteros aleatorios
+
+\noindent \ \ \ \ public ArregloBinario( int tamanio )
+
+\noindent \ \ \ \ \{
+
+\noindent \ \ \ \ \ \ \ \ datos = new int[ tamanio ]; // crea espacio para el arreglo\\
+
+\noindent \ \ \ \ \ \ \ \ // llena el arreglo con enteros aleatorios en el rango de 10 a 99
+
+\noindent \ \ \ \ \ \ \ \ for ( int i = 0; i < tamanio; i++ )
+
+\noindent \ \ \ \ \ \ \ \ \ \ \ \ datos[ i ] = 10 + generador.nextInt( 90 );\\
+
+\noindent \ \ \ \ \ \ \ \ Arrays.sort( datos );
+
+\noindent \ \ \ \ \} // fin del constructor de ArregloBinario\\
+
+\noindent \ \ \ \ // realiza una búsqueda binaria en los datos
+
+\noindent \ \ \ \ public int busquedaBinaria( int elementoBusqueda )
+
+\noindent \ \ \ \ \{
+
+\noindent \ \ \ \ \ \ \ \ int inferior = 0; // extremo inferior del área de búsqueda
+
+\noindent \ \ \ \ \ \ \ \ int superior = datos.length - 1; // extremo superior del área de búsqueda
+
+\noindent \ \ \ \ \ \ \ \ int medio = ( inferior + superior + 1 ) / 2; // elemento medio
+
+\noindent \ \ \ \ \ \ \ \ int ubicacion = -1; // devuelve el valor; -1 si no lo encontró\\
+
+\noindent \ \ \ \ \ \ \ \ do // ciclo para buscar un elemento
+
+\noindent \ \ \ \ \ \ \ \ \{
+
+\noindent \ \ \ \ \ \ \ \ \ \ \ \ // imprime el resto de los elementos del arreglo
+
+\noindent \ \ \ \ \ \ \ \ \ \ \ \ System.out.print( elementosRestantes( inferior, superior ) );\\
+
+\noindent \ \ \ \ \ \ \ \ \ \ \ \ // imprime espacios para alineación
+
+\noindent \ \ \ \ \ \ \ \ \ \ \ \ for ( int i = 0; i < medio; i++ )
+
+\noindent \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ System.out.print( "   " );
+
+\noindent \ \ \ \ \ \ \ \ \ \ \ \ System.out.println( " * " ); // indica el elemento medio actual\\
+
+\noindent \ \ \ \ \ \ \ \ \ \ \ \ // si el elemento se encuentra en medio
+
+\noindent \ \ \ \ \ \ \ \ \ \ \ \ if ( elementoBusqueda == datos[ medio ] )
+
+\noindent \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ubicacion = medio; // la ubicación es el elemento medio actual\\
+
+\noindent \ \ \ \ \ \ \ \ \ \ \ \ // el elemento medio es demasiado alto
+
+\noindent \ \ \ \ \ \ \ \ \ \ \ \ else if ( elementoBusqueda < datos[ medio ] )
+
+\noindent \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ superior = medio - 1; // elimina la mitad superior
+
+\noindent \ \ \ \ \ \ \ \ \ \ \ \ else // el elemento medio es demasiado bajo
+
+\noindent \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inferior = medio + 1; // elimina la mitad inferior
+
+\noindent \ \ \ \ \ \ \ \ \ \ \ \ medio = ( inferior + superior + 1 ) / 2; // recalcula el elemento medio
+
+\noindent \ \ \ \ \ \ \ \ \} while ( ( inferior <= superior ) \&\& ( ubicacion == -1 ) );\\
+
+\noindent \ \ \ \ \ \ \ \ return ubicacion; // devuelve la ubicación de la clave de búsqueda
+
+\noindent \ \ \ \ \} // fin del método busquedaBinaria\\
+
+\noindent \ \ \ \ // método para imprimir ciertos valores en el arreglo
+
+\noindent \ \ \ \ public String elementosRestantes( int inferior, int superior )
+
+\noindent \ \ \ \ \{
+
+\noindent \ \ \ \ \ \ \ \ StringBuilder temporal = new StringBuilder();\\
+
+\noindent \ \ \ \ \ \ \ \ // imprime espacios para alineación
+
+\noindent \ \ \ \ \ \ \ \ for ( int i = 0; i < inferior; i++ )
+
+\noindent \ \ \ \ \ \ \ \ \ \ \ \ temporal.append( "  " );\\
+
+\noindent \ \ \ \ \ \ \ \ // imprime los elementos que quedan en el arreglo
+
+\noindent \ \ \ \ \ \ \ \ for ( int i = inferior; i <= superior; i++ )
+
+\noindent \ \ \ \ \ \ \ \ \ \ \ \ temporal.append( datos[ i ] + "" );\\
+
+\noindent \ \ \ \ \ \ \ \ temporal.append( "\textbackslash n" );
+ 
+\noindent \ \ \ \ \ \ \ \ return temporal.toString();
+
+\noindent \ \ \ \ \} // fin del método elementosRestantes\\
+
+\noindent \ \ \ \ // método para imprimir los valores en el arreglo
+
+\noindent \ \ \ \ public String toString()
+
+\noindent \ \ \ \ \{
+
+\noindent \ \ \ \ \ \ \ \ return elementosRestantes( 0, datos.length - 1 );
+
+\noindent \ \ \ \ \} // fin del método toString 
+
+// fin de la clase ArregloBinario
+
+
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Explicación}
+
+Para este caso se declara la clase ArregloBinario. Esta clase es similar a ArregloLineal: tiene dos variables de instancia private, un constructor, un método de búsqueda (busquedaBinaria), un método elementosRestantes y un método toString. En las líneas 13 a 22 se declara el constructor. Una vez que se inicializa el arreglo con valores int aleatorios de 10 a 99 (líneas 18 y 19), en la línea 21 se hace una llamada al método Arrays.sort en el arreglo datos. El método sort es un método static de la clase Arrays, que ordena los elementos en un arreglo en orden ascendente de manera predeterminada; una versión sobrecargada de este método nos permite cambiar la forma de ordenar los datos. Recordemos que el algoritmo de búsqueda binaria sólo funciona en un arreglo ordenado.
+
+En las líneas 25 a 56 se declara el método busquedaBinaria. La clave de búsqueda se pasa al parámetro elementoBusqueda (línea 25). En las líneas 27 a 29 se calcula el índice del extremo inferior, el índice del extremo superior y el índice medio de la porción del arreglo en la que el programa está buscando actualmente. Al principio del método, el extremo inferior es 0, el extremo superior es la longitud del arreglo menos 1, y medio es el promedio de estos dos valores. En la línea 30 se inicializa la ubicacion del elemento en -1; el valor que se devolverá si no se encuentra el elemento. En las líneas 32 a 53 se itera hasta que inferior sea mayor que superior (esto ocurre cuando no se encuentra el elemento), o cuando ubicacion no sea igual a -1 (lo cual indica que se encontró la clave de búsqueda). En la línea 43 se evalúa si el valor en el elemento medio es igual a elementoBusqueda. Si esto es true, en la línea 44 se asigna medio a ubicacion. Después el ciclo termina y ubicacion se devuelve al método que hizo la llamada. Cada iteración del ciclo evalúa un solo valor (línea 43) y elimina la mitad del resto de los valores en el arreglo (línea 48 o 50). En las líneas 26 a 44 se itera hasta que el usuario escriba -1. Para cada uno de los otros números que escriba el usuario, el programa realiza una búsqueda binaria en los datos para determinar si coinciden con un elemento en el arreglo. La primera línea de salida de este programa es el arreglo de valores int, en orden ascendente. Cuando el usuario indica al programa que busque el número 23, el programa primero evalúa el elemento medio, que es 42 (según lo indicado por el símbolo *). La clave de búsqueda es menor que 42, por lo que el programa elimina la segunda mitad del arreglo y evalúa el elemento medio de la primera mitad. La clave de búsqueda es menor que 34, por lo que el programa elimina la segunda mitad del arreglo, dejando sólo tres elementos. Por último, el programa comprueba el 23 (que coincide con la clave de búsqueda) y devuelve el índice 1.
+
+
+\subsection{Comparación con Búsqueda Lineal}
+
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\cellcolor[gray]{0.85} \textbf{Método de Búsqueda} & 	\cellcolor[gray]{0.85} \textbf{Lineal} 		& 	\cellcolor[gray]{0.85} \textbf{Binario}	& \cellcolor[gray]{0.85}\textbf{Binario Recursivo}\\
+
+\hline
+\cellcolor[gray]{0.85}\textbf{Complejidad} & O($n^\mathrm{2}$) & O(log $n$) & O(log $n$)\\
+\hline
+\cellcolor[gray]{0.85}\textbf{Variables Creadas} & 1 Índice & 3 Variables & 1 Auxiliar\\
+\hline
+\end{tabular}
+\end{center}
+
+
+\subsection{Procedimientos}
+
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\cellcolor[gray]{0.85} \textbf{Tamaño del Arreglo} & 	\cellcolor[gray]{0.85} \textbf{Búsqueda Lineal} 		& 	\cellcolor[gray]{0.85} \textbf{Búsqueda Binaria}\\
+
+\hline
+1	&	1	&	1  \\
+\hline
+10	&	10	&	4\\
+\hline
+5.000	&	5.000	&	11  \\
+\hline
+100.000	&	100.000	&	18  \\
+\hline
+1.000.000	&	1.000.000	&	21  \\
+\hline
+\end{tabular}
+\end{center}
+

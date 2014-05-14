@@ -1,0 +1,67 @@
+
+\section{Complejidad teórica de la Búsqueda Binaria Recursiva}
+
+A diferencia de la búsqueda binaria iterativa, su versión recursiva es más lenta con cada incremento de número de elementos, ya que existirán más llamadas a la función por resolver, con el consiguiente gasto de tiempo de guardar y restaurar parámetros.
+
+\textbf{Mejor caso}: la búsqueda binaria coincide con el elemento buscado en el primer punto medio: sólo se necesitaría una comparación de elementos. Esto significa que sus tiempos de ejecución óptimos no dependen de la cantidad de datos: son constantes y por tanto proporcionales a 1, es decir, son de O(1).
+
+\textbf{Peor caso}: En el peor caso la búsqueda binaria recursiva el valor a encontrar no se encuentra en el arreglo tras haber realizado las llamadas correspondientes del algoritmo (dividir y comparar), requiriendo un nivel de orden O(log $n$).
+
+\textbf{Caso promedio}: Se debe tomar en cuenta el comportamiento del algoritmo y su condición de término, obteniéndose la siguiente ecuación de recurrencia:
+
+\begin{center}
+$T(n) = T(n/2) + C$\\
+$T(1) = 1$
+\end{center}
+
+Donde ''$n/2$'' responde al proceso de comparar el elemento medio del arreglo con el valor a buscar y el T(1) = 1 resume el mejor caso: el dato es encontrado en centro de la estructura mediante una llamada.
+
+\textbf{Para hallar el nivel de complejidad promedio se hacen los siguientes pasos:}
+
+\begin{enumerate}[I. ]
+
+\item Reemplazar las $n$ en la ecuación original con valores sucesivos:
+
+\begin{center}
+$T(n/2) = T(n/4) + C$\\
+$T(n/4) = T(n/8) + C$\\
+$T(n/8) = T(n/16) + C$\\
+$T(n/16) = T(n/32) + C$
+\end{center}
+
+\item Generalizar en términos de $n$ y $k$ para eliminar la recurrencia:
+
+\begin{center}
+$T(n) = T(n/2) + C$\\
+$T(n) = T(n/4) + C + C$\\
+$T(n) = T(n/8) + C + C + C$\\
+$T(n) = T(n/16) + C + C + C + C$\\
+$T(n) = T(n/32) + C + C + C + C + C$
+\end{center}
+
+Nótese que al realizar las sucesiones se llega dar con el siguiente patrón: que los denominadores de las fracciones obedecen a potencias de 2 ($2^1, 2^2, 2^3, 2^4, $etc...) y que las constantes ''$C$'' son directamente proporcionales a los valores arrojados en los exponentes. Por lo que al condensar todo en una fórmula se obtiene que:
+
+{\centerline{ \bfseries $T(n) = T(n/2^k) + kC$} }
+
+\item Igualar con la condición inicial los términos encerrados en T($n$)
+
+PREVIO: se debe eliminar la variable ''k'' con la condición de tope:
+
+{\centerline{ \textbf{$n/2^k = 1 \rightarrow n = 2^k$}} }
+
+Se aplica propiedades de logaritmos para dejar la ecuación en términos de ''n'' :
+
+{\centerline{ \textbf{log$_2 n = k$}} }
+
+{\centerline{ \textbf{Resultado: $T(n) = T( (n/2)^{log_2 n}) + log2n * C$}} }
+
+Usando la condición de tope T(1) = 1
+
+{\centerline{ \textbf{$T(n) = 1 + log_2 n * C$}} }
+
+Con lo obtenido recientemente se llega a la conclusión de que para el caso promedio la Búsqueda Binaria Recursiva tiene complejidad de orden \textbf{O(log$_2 n$)}.
+
+
+
+
+\end{enumerate}
